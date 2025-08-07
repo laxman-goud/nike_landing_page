@@ -1,6 +1,7 @@
 import { headerLogo } from '../assets/images';
 import { hamburger } from '../assets/icons';
 import { navLinks } from '../constants';
+import Button from './Button';
 
 const NavBar = () => {
     return (
@@ -13,9 +14,13 @@ const NavBar = () => {
                     {navLinks.map((item) => {
                         return (
                             <li key={item.label}>
-                                <a href={item.href} className='font-montserrat leading-normal text-lg text-slate-gray'>
-                                    {item.label}
-                                </a>
+                                {(item.label == "Sign In / Sign Up") ? 
+                                    <Button label={'Sign In / Sign Up'} />
+                                : 
+                                    <a href={item.href} className='font-montserrat leading-normal text-lg text-slate-gray'>
+                                        {item.label}
+                                    </a>
+                                }
                             </li>
                         );
                     })}

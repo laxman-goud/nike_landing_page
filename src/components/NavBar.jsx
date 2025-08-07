@@ -1,37 +1,71 @@
+import { useState } from 'react';
 import { headerLogo } from '../assets/images';
 import { hamburger } from '../assets/icons';
 import { navLinks } from '../constants';
 import Button from './Button';
 
 const NavBar = () => {
+    const [menuOpen, setMenuOpen] = useState(false); // default: menu closed
+
     return (
-        <header className='padding-x py-8 absolute z-10 w-full'>
-            <nav className='flex justify-between items-start items-center max-container'>
+        <header className="padding-x py-8 bg-white fixed z-50 w-full border-b-2 ">
+            <nav className="flex justify-between items-start items-center max-container">
                 <a href="/">
                     <img src={headerLogo} alt="Logo" width={130} height={29} />
                 </a>
-                <ul className='flex-1 flex justify-center items-center gap-16 max-lg:hidden'>
-                    {navLinks.map((item) => {
-                        return (
-                            <li key={item.label}>
-                                {(item.label == "Sign In / Sign Up") ? 
-                                    <Button label={'Sign In / Sign Up'} />
-                                : 
-                                    <a href={item.href} className='font-montserrat leading-normal text-lg text-slate-gray'>
-                                        {item.label}
-                                    </a>
-                                }
-                            </li>
-                        );
-                    })}
+
+                {/* Desktop Menu */}
+                <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
+                    {navLinks.map((item) => (
+                        <li key={item.label}>
+                            {item.label === 'Sign In / Sign Up' ? (
+                                <Button label={'Sign In / Sign Up'} />
+                            ) : (
+                                <a
+                                    href={item.href}
+                                    className="font-montserrat leading-normal text-lg text-slate-gray"
+                                >
+                                    {item.label}
+                                </a>
+                            )}
+                        </li>
+                    ))}
                 </ul>
+
+                {/* Hamburger Icon for Mobile */}
                 <div className="hidden max-lg:block">
-                    <img src={hamburger} alt="Hamburger" width={25} height={25}/>
+                    <img
+                        src={hamburger}
+                        alt="Hamburger"
+                        width={25}
+                        height={25}
+                        onClick={() => setMenuOpen(true)}
+                        className="cursor-pointer"
+                    />
                 </div>
-
             </nav>
-        </header>
-    )
-}
 
-export default NavBar
+            {/* Mobile Menu */}
+            {menuOpen && (
+                <div className="fixed inset-0 bg-white flex flex-col justify-center items-center gap-6 z-50">
+                    <Button label="Close" closeMenu={setMenuOpen} />
+                    <ul className="flex flex-col gap-6 items-center">
+                        {navLinks.map((link) => (
+                            <li key={link.label}>
+                                <a
+                                    href={link.href}
+                                    className="block text-slate-600 hover:text-black text-xl"
+                                    onClick={() => setMenuOpen(false)} // close on link click
+                                >
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </header>
+    );
+};
+
+export default NavBar;

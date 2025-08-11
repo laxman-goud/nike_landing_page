@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { headerLogo } from '../assets/images';
-import { hamburger } from '../assets/icons';
+import { hamburger, xmark } from '../assets/icons';
 import { navLinks } from '../constants';
 import Button from './Button';
 
@@ -48,7 +48,7 @@ const NavBar = () => {
             {/* Mobile Menu */}
             {menuOpen && (
                 <div className="fixed inset-0 bg-white flex flex-col justify-center items-center gap-6 z-50">
-                    <Button label="Close" closeMenu={setMenuOpen} />
+                    <Button label="Close" closeMenu={setMenuOpen} iconURL={xmark} />
                     <ul className="flex flex-col gap-6 items-center">
                         {navLinks.map((link) => (
                             <li key={link.label}>

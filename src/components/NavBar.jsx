@@ -18,8 +18,8 @@ const NavBar = () => {
                 <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
                     {navLinks.map((item) => (
                         <li key={item.label}>
-                            {item.label === 'Sign In / Sign Up' ? (
-                                <Button label={'Sign In / Sign Up'} />
+                            {item.label === 'Login' ? (
+                                <Button label={'Login'} />
                             ) : (
                                 <a
                                     href={item.href}

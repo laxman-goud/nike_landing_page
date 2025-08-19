@@ -3,6 +3,7 @@ import { headerLogo } from '../assets/images';
 import { hamburger, xmark } from '../assets/icons';
 import { navLinks } from '../constants';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     const [menuOpen, setMenuOpen] = useState(false); // default: menu closed
@@ -18,16 +19,21 @@ const NavBar = () => {
                 <ul className="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
                     {navLinks.map((item) => (
                         <li key={item.label}>
-                            {item.label === 'Login' ? (
-                                <Button label={'Login'} />
-                            ) : (
-                                <a
-                                    href={item.href}
-                                    className="font-montserrat leading-normal text-lg text-slate-gray"
-                                >
-                                    {item.label}
-                                </a>
-                            )}
+                            {item.label === 'Login' ?
+                                (
+                                    <Link to="/login" className="px-7 py-4 font-montserrat text-lg leading-none border rounded-full bg-coral-red text-white border-coral-red">
+                                        {item.label}
+                                    </Link>
+
+                                ) :
+                                (
+                                    <a
+                                        href={item.href}
+                                        className="font-montserrat leading-normal text-lg text-slate-gray"
+                                    >
+                                        {item.label}
+                                    </a>
+                                )}
                         </li>
                     ))}
                 </ul>
@@ -52,13 +58,23 @@ const NavBar = () => {
                     <ul className="flex flex-col gap-6 items-center">
                         {navLinks.map((link) => (
                             <li key={link.label}>
-                                <a
-                                    href={link.href}
-                                    className="block text-slate-600 hover:text-black text-xl"
-                                    onClick={() => setMenuOpen(false)} // close on link click
-                                >
-                                    {link.label}
-                                </a>
+                                {link.label === 'Login' ?
+                                    (
+                                        <Link to="/login" className="px-7 py-4 font-montserrat text-lg leading-none rounded-full">
+                                            {link.label}
+                                        </Link>
+
+                                    ) :
+                                    (
+                                        <a
+                                            href={link.href}
+                                            className="block text-slate-600 hover:text-black text-xl"
+                                            onClick={() => setMenuOpen(false)} // close on link click
+                                        >
+                                            {link.label}
+                                        </a>
+                                    )
+                                }
                             </li>
                         ))}
                     </ul>

@@ -55,6 +55,12 @@ npm run dev
 ```
 Then open **http://localhost:5173** in your browser.
 
+## 🤝 Contributing
+
+Contributions are welcome! 🎉  
+
+Feel free to **fork this project**, open an **issue**, or submit a **pull request** with your improvements.  
+Please make sure your changes are clear, concise, and follow the contributing guidelines. 
 
 ## 📜 License
 This project is licensed under the MIT License.

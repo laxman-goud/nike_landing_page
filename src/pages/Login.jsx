@@ -21,6 +21,7 @@ const Login = () => {
                         <input
                             type="email"
                             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black"
+                            placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -31,6 +32,7 @@ const Login = () => {
                         <input
                             type="password"
                             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black"
+                            placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -38,7 +40,7 @@ const Login = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition"
+                        className="w-full bg-coral-red text-white py-2 rounded"
                     >
                         Login
                     </button>
